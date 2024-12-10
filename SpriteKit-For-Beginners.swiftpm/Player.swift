@@ -1,6 +1,6 @@
 import SpriteKit
 
 // Subclasse Player
-class Player: Character {
+class Player: SKNode {
     
 }

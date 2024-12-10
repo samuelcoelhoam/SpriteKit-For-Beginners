@@ -5,8 +5,32 @@ import AVFoundation
 @MainActor
 class GameScene: SKScene {
     
+    
+    //Variaveis que receberão as classes Player e NPC
+    var npc: NPC!
+
+    //Camera e variaveis para habilitar movimentos
+    let cameraNode = SKCameraNode()
+    
+    //Variaveis de mudança de estado
+    var isMovingRight = false
+    var isMovingLeft = false
+    
+    //Objetos e cenário
+    let background = SKSpriteNode(imageNamed: "background1")
+    let pedra = SKSpriteNode(imageNamed: "pedra")
+    
+    // declaração das variaveis de Áudio
+    private var backgroundMusicPlayer: AVAudioPlayer?
+    private var npcSoundPlayer: AVAudioPlayer?
+    
     //Funcão principal
     override func didMove(to view: SKView) {
+        
+        pedra.position = CGPoint(x: -316, y: -16)
+        pedra.setScale(6)
+        pedra.texture?.filteringMode = .nearest
+        addChild(pedra)
         
     }
     
@@ -25,4 +49,14 @@ class GameScene: SKScene {
         
     }
     
+}
+
+extension GameScene: @preconcurrency SKPhysicsContactDelegate {
+    func didBegin(_ contact: SKPhysicsContact) {
+
+    }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+
+    }
 }
